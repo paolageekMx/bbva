@@ -12,7 +12,7 @@ const path         = require('path');
 
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/back-reto', {useMongoClient: true})
+  .connect('mongodb://admin:Iron2018.@ds251002.mlab.com:51002/ironmix', {useMongoClient: true})
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
