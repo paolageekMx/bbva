@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Routes from './Routes'
 import { Layout, Breadcrumb, Icon } from 'antd'
+import 'antd/dist/antd.css';
 const { Header, Content, Footer } = Layout;
-
 class App extends Component {
   render() {
     return (

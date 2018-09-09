@@ -12,12 +12,15 @@ router.get('/', (req, res, next) => {
 router.get('/saldos', (req, res, next)=>{
   Saldo.find()
   .then(Saldo =>{
-    res.render()
+    res.json(Saldo)
+  })
+  .catch(err=>{
+    console.log(err)
   })
 })
 
 router.post('/registro', (req, res, next)=>{
-  Saldo.save()
+  Saldo.findOne()
   .then(Saldo=>{
     res.render
   })

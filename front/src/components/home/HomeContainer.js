@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Layout, Breadcrumb, Icon, Input } from 'antd'
-import Papa from 'papaparse'
+import {buscaSaldo} from '../../lib/service'
 const Search = Input.Search;
 const { Header, Content, Footer } = Layout;
 
@@ -14,12 +14,27 @@ export default class HomeContainer extends Component {
         this.setState({ collapsed });
     }
 
-    onChange = (e) => {
-        const rfc = e.target.value;
-        console.log(rfc);
+ 
+
+    // onHandleChange = event =>{
+    //     this.setState ({
+    //         rfc: event.target.value
+    //     })
+    // console.log(this.state)
+    // }
+
+    onSubmit = event => {
+        console.log ('Saludos', event)
+        buscaSaldo(this.state.rfc)
+        .then (response =>{
+            console.log(response)
+        return response
+        })
+        .catch (err =>{
+            console.log(err)
+        })
 
     }
-
     render() {
         return (
             <div>
@@ -31,10 +46,12 @@ export default class HomeContainer extends Component {
                     <h1 style={{ textAlign: "center" }}>Ingrese el RFC: </h1>
                     <Search
                         placeholder="input search text"
-                        onChange={this.onChange}
+                        //onChange={this.onHandleChange}
                         style={{ maxWidth: '500px', margin: '0 auto' }}
-                        enterButton
+                        onSearch={value => this.onSubmit(value)}
+                         enterButton
                     />
+
                 </div>
             </div>
         )
